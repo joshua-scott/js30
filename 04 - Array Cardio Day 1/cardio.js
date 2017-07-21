@@ -55,10 +55,13 @@
     const data = [ 'car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
     let count = {};
-    data.forEach(item => count.hasOwnProperty(item) ? count[item]++ : count[item] = 0);
+    data.forEach(item => count[item] ? count[item]++ : count[item] = 1);
 
     /* I prefer using forEach, like the above example, but the question said Reduce. So here it's solved using reduce: */
-    // const transportation = data.reduce((obj, item) => {
-    //     obj.hasOwnProperty(item) ? obj[item]++ : obj[item] = 0;
-    //     return obj;
-    // }, {});
+    const transportation = data.reduce((obj, item) => {
+        if (!obj[item]) {
+            obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+    }, {});
