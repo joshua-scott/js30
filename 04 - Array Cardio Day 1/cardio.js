@@ -26,39 +26,39 @@
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
-    const names = inventors.map(inventor => {
-        let names = [];
-        names.push(inventor.first);
-        names.push(inventor.last);
-        return names;
-    });
-
+    const names = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
-    // const oldestToYoungest = inventors.sort((a, b) => {
-    //     return (b.year - a.year);
-    // });
     const sortedByDOB = inventors.sort((a, b) => b.year - a.year);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
-    const totalYears = inventors.reduce((sum, inventor) => {
-        return sum + (inventor.passed - inventor.year);
+    const totalYears = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year);
     }, 0) ;
 
     // 5. Sort the inventors by years lived
     const sortedByYearsLived = inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
 
-    console.log(sortedByYearsLived);
-
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    /* TODO */
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const byLastName = people.sort();
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = [ 'car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    let count = {};
+    data.forEach(item => count.hasOwnProperty(item) ? count[item]++ : count[item] = 0);
+
+    /* I prefer using forEach, like the above example, but the question said Reduce. So here it's solved using reduce: */
+    // const transportation = data.reduce((obj, item) => {
+    //     obj.hasOwnProperty(item) ? obj[item]++ : obj[item] = 0;
+    //     return obj;
+    // }, {});
