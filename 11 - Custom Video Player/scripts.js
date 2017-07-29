@@ -5,8 +5,9 @@ const progressFilled = player.querySelector('.progress__filled');
 
 const controls = {
     toggle:    player.querySelector('.toggle'),
-    range:  player.querySelectorAll('input[type=range]'),
     skip:    player.querySelectorAll('[data-skip]'),
+    fullscreen: player.querySelector('.fullscreen'),
+    range:  player.querySelectorAll('input[type=range]'),
     scrubber: player.querySelector('.progress')
 };
 
@@ -59,4 +60,37 @@ player.addEventListener('mouseup', () => mousedown = false);
 function scrub(e) {
     const scrubTime = e.offsetX / progress.offsetWidth;
     video.currentTime = video.duration * scrubTime;
+}
+
+/* Fullscreen button */
+controls.fullscreen.addEventListener('click', toggleFullscreen);
+
+function toggleFullscreen() {
+    // Warning: messy stackoverflow code below
+    if (
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
+    ) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    } else {
+        if (player.requestFullscreen) {
+            player.requestFullscreen();
+        } else if (player.mozRequestFullScreen) {
+            player.mozRequestFullScreen();
+        } else if (player.webkitRequestFullscreen) {
+            player.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (player.msRequestFullscreen) {
+            player.msRequestFullscreen();
+        }
+    }
 }
