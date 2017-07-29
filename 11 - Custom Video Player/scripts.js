@@ -36,3 +36,17 @@ setInterval(updateProgressBar, 1000);
 function updateProgressBar() {
     progressBar.style.flexBasis = `${video.currentTime / video.duration * 100}%`;
 }
+
+/* Volume slider */
+controls.volume.addEventListener('input', changeVolume);
+
+function changeVolume() {
+    video.volume = this.value;
+}
+
+/* Speed slider */
+controls.speed.addEventListener('input', changeSpeed);
+
+function changeSpeed() {
+    video.playbackRate = this.value;
+}
