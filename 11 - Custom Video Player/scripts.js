@@ -1,52 +1,62 @@
-const video = document.querySelector('video');
-const progressBar = document.querySelector('.progress__filled');
+const player = document.querySelector('.player');
+const video = player.querySelector('video');
+const progress = player.querySelector('.progress')
+const progressFilled = player.querySelector('.progress__filled');
 
 const controls = {
-    play:    document.querySelector('.toggle'),
-    volume:  document.getElementsByName('volume')[0],
-    speed:   document.getElementsByName('playbackRate')[0],
-    back:    document.querySelectorAll('[data-skip]')[0],
-    forward: document.querySelectorAll('[data-skip]')[1]
+    toggle:    player.querySelector('.toggle'),
+    range:  player.querySelectorAll('input[type=range]'),
+    skip:    player.querySelectorAll('[data-skip]'),
+    scrubber: player.querySelector('.progress')
 };
 
 /* Play button */
-controls.play.addEventListener('click', togglePlay);
+controls.toggle.addEventListener('click', togglePlay);
+video.addEventListener('click', togglePlay);
 
 function togglePlay() {
-    if (video.paused) {
-        video.play();
-        controls.play.textContent = '❙❙';
-    } else {
-        video.pause();
-        controls.play.textContent = '►';
-    }
+    video.paused ? video.play() : video.pause();
+}
+
+/* Change play button icon */
+video.addEventListener('play', toggleButton);
+video.addEventListener('pause', toggleButton);
+
+function toggleButton() {
+    const icon = this.paused ? '►' : '❙❙';
+    controls.toggle.textContent = icon;
 }
 
 /* Skip buttons */
-controls.forward.addEventListener('click', skipVideo);
-controls.back.addEventListener('click', skipVideo);
+controls.skip.forEach(btn => btn.addEventListener('click', skipVideo));
 
 function skipVideo() {
     video.currentTime += Number(this.dataset.skip);
 }
 
 /* Progress bar */
-setInterval(updateProgressBar, 1000);
+video.addEventListener('timeupdate', updateprogressFilled);
 
-function updateProgressBar() {
-    progressBar.style.flexBasis = `${video.currentTime / video.duration * 100}%`;
+function updateprogressFilled() {
+    progressFilled.style.flexBasis = `${video.currentTime / video.duration * 100}%`;
 }
 
-/* Volume slider */
-controls.volume.addEventListener('input', changeVolume);
+/* Volume and speed sliders */
+controls.range.forEach(slider => slider.addEventListener('input', handleRangeUpdate));
 
-function changeVolume() {
-    video.volume = this.value;
+function handleRangeUpdate() {
+    video[this.name] = this.value;
 }
 
-/* Speed slider */
-controls.speed.addEventListener('input', changeSpeed);
+/* Progress slider */
+controls.scrubber.addEventListener('click', scrub); // Handles simple clicks
 
-function changeSpeed() {
-    video.playbackRate = this.value;
+controls.scrubber.addEventListener('mousemove', e => { mousedown && scrub(e) }); // Handles dragging
+let mousedown = false; 
+player.addEventListener('mousedown', () => mousedown = true);
+player.addEventListener('mouseup', () => mousedown = false);
+
+function scrub(e) {
+    const scrubTime = e.offsetX / progress.offsetWidth;
+    video.currentTime = video.duration * scrubTime;
 }
