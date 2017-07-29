@@ -102,14 +102,14 @@ const keys = {
     Space:  togglePlay,
     KeyK:   togglePlay,
     KeyF:   toggleFullscreen,
-    KeyJ:   skipForward,
-    KeyL:   skipBack,
+    KeyJ:   skipBack,
+    KeyL:   skipForward
 };
-
-function skipForward() {
-    video.currentTime += 25;
-}
 
 function skipBack() {
     video.currentTime -= 10;
+}
+
+function skipForward() {
+    video.currentTime += 25;
 }
