@@ -96,17 +96,20 @@ function toggleFullscreen() {
 }
 
 /* Keyboard inputs */
-/* I think an object might work better here, perhaps update in the future */
-document.addEventListener('keyup', function(e) {
-    const key = e.code;
+document.addEventListener('keyup', function(e) { keys[e.code]() });
 
-    if (key === "Space" || key === "KeyK") {
-        togglePlay();
-    } else if (key === "KeyF") {
-        toggleFullscreen();
-    } else if (key === "KeyJ") {
-        video.currentTime -= 10;
-    } else if (key === "KeyL") {
-        video.currentTime += 25;
-    }
-});
+const keys = {
+    Space:  togglePlay,
+    KeyK:   togglePlay,
+    KeyF:   toggleFullscreen,
+    KeyJ:   skipForward,
+    KeyL:   skipBack,
+};
+
+function skipForward() {
+    video.currentTime += 25;
+}
+
+function skipBack() {
+    video.currentTime -= 10;
+}
