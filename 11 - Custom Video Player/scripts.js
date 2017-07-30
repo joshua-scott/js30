@@ -99,11 +99,11 @@ function toggleFullscreen() {
 document.addEventListener('keyup', function(e) { keys[e.code]() });
 
 const keys = {
-    Space:  togglePlay,
-    KeyK:   togglePlay,
-    KeyF:   toggleFullscreen,
-    KeyJ:   skipBack,
-    KeyL:   skipForward
+    Space() { togglePlay() },
+    KeyK() { togglePlay() },
+    KeyF() { toggleFullscreen },
+    KeyJ() { skipBack },
+    KeyL() { skipForward }
 };
 
 function skipBack() {
