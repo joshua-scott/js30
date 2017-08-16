@@ -40,3 +40,19 @@ addItems.addEventListener('submit', addItem);
 itemsList.addEventListener('click', toggleDone);    // using eventDelegation so we only need one eventListener that always works
 
 populateList(items, itemsList);             // load the list on page load (if there is anything in localStorage)
+
+
+
+/* Check and uncheck buttons */
+
+document.querySelector('.check-all').addEventListener('click', checkUncheckAll);
+document.querySelector('.uncheck-all').addEventListener('click', checkUncheckAll);
+
+function checkUncheckAll() {
+    items.forEach(item => {
+        item.done = this.dataset.done == 'true' ? true : false;
+    });
+
+    localStorage.setItem('items', JSON.stringify(items));
+    populateList(items, itemsList);    
+}

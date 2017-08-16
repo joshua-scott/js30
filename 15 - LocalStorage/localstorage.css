@@ -70,11 +70,13 @@ h2 {
     content: '🌮';
 }
 
-.add-items {
+.add-items,
+.check-buttons button {
     margin-top: 20px;
 }
 
-.add-items input {
+.add-items input,
+.check-buttons button {
     padding: 10px;
     outline: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
