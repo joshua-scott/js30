@@ -16,7 +16,7 @@
 11. [Custom Video Player](https://jscott313.github.io/JavaScript30/11%20-%20Custom%20Video%20Player/index.html)
 12. [Key Sequence Detection	](https://jscott313.github.io/JavaScript30/12%20-%20Konami%20Code%20Detection/konami.html)
 13. [Slide in on Scroll](https://jscott313.github.io/JavaScript30/13%20-%20Slide%20In%20on%20Scroll/slide.html)
-14. [JavaScript References VS Copying](https://jscott313.github.io/JavaScript30/14%20-%20JavaScript%20Copying%20by%20Reference/reference.html)
+14. [JavaScript References VS Copying](https://jscott313.github.io/JavaScript30/14%20-%20Copying%20by%20Reference/reference.html)
 15. [LocalStorage](https://jscott313.github.io/JavaScript30/15%20-%20LocalStorage/localstorage.html)
 16. [Mouse Move Shadow](https://jscott313.github.io/JavaScript30/16%20-%20Mouse%20Move%20Shadow/shadow.html)
 17. [Sort Without Articles](https://jscott313.github.io/JavaScript30/17%20-%20Sort%20Without%20Articles/sort.html)
