@@ -13,7 +13,8 @@ function getVideo() {
       video.play();
     })
     .catch(err => {
-      console.error('OH NO!', err);
+      alert('No webcam found. Connect it and refresh.');
+      console.error('No webcam found:', err);
     });
 }
 
