@@ -24,7 +24,7 @@
 19. [Webcam Fun](https://jscott313.github.io/JavaScript30/19%20-%20Webcam%20Fun/index.html)
 20. [Speech Detection](https://jscott313.github.io/JavaScript30/20%20-%20Speech%20Detection/speech.html)
 21. Geolocation
-22. Follow Along Link Highlighter
+22. [Follow Along Link Highlighter](https://jscott313.github.io/JavaScript30/22%20-%20Follow%20Along%20Link%20Highlighter/links.html)
 23. Speech Synthesis
 24. Sticky Nav
 25. Event Capture, Propagation, Bubbling and Once	
