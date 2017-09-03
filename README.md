@@ -27,7 +27,7 @@
 22. [Follow Along Link Highlighter](https://jscott313.github.io/JavaScript30/22%20-%20Follow%20Along%20Link%20Highlighter/)
 23. [Speech Synthesis](https://jscott313.github.io/JavaScript30/23%20-%20Speech%20Synthesis/)
 24. [Sticky Nav](https://jscott313.github.io/JavaScript30/24%20-%20Sticky%20Nav/)
-25. Event Capture, Propagation, Bubbling and Once	
+25. [Event Capture, Propagation, Bubbling and Once](https://jscott313.github.io/JavaScript30/25%20-%20Event%20Capture,%20Propagation,%20Bubbling%20and%20Once/)
 26. Stripe Follow Along Nav
 27. Click and Drag
 28. Video Speed Controller
