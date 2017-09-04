@@ -52,21 +52,23 @@ nav ul {
 
 .dropdown {
   opacity: 0;
+  display: none;
+  /* ^ See below  ^ */
   position: absolute;
   overflow: hidden;
   padding: 20px;
   top: -20px;
-  border-radius: 2px;
+  border-radius: 2px; 
   transition: all 0.5s;
   transform: translateY(100px);
   will-change: opacity;
-  display: none;
 }
 
+/*  So, display: block and opacity: 1 are required separately to achieve
+    the animation effect. React and Angular both use the same effect. */
 .trigger-enter .dropdown {
   display: block;
 }
-
 .trigger-enter-active .dropdown {
   opacity: 1;
 }
