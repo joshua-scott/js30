@@ -31,13 +31,13 @@ video {
 
 .speed-bar {
   width: 100%;
-  background: #BCE126;
+  background: linear-gradient(-170deg, #2376ae 0%, #c16ecf 100%);
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2px;
-  color: #5F183C;
+  color: #fff;
   height: 16.3%;
   font-size: 1.3em;
 }
