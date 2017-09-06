@@ -1,5 +1,5 @@
 # JavaScript30
-30 days of JavaScript projects with Wes Bos at at [https://JavaScript30.com](https://JavaScript30.com)
+30 days of JavaScript projects with Wes Bos at [https://JavaScript30.com](https://JavaScript30.com)
 
 ## Contents
 
@@ -30,6 +30,6 @@
 25. [Event Capture, Propagation, Bubbling and Once](https://jscott313.github.io/JavaScript30/25%20-%20Event%20Capture,%20Propagation,%20Bubbling%20and%20Once/)
 26. [Stripe Follow Along Nav](https://jscott313.github.io/JavaScript30/26%20-%20Stripe%20Follow%20Along%20Nav/)
 27. [Click and Drag](https://jscott313.github.io/JavaScript30/27%20-%20Click%20and%20Drag/)
-28. Video Speed Controller
+28. [Video Speed Controller](https://jscott313.github.io/JavaScript30/28%20-%20Video%20Speed%20Controller/)
 29. Countdown Timer
 30. Whack A Mole
