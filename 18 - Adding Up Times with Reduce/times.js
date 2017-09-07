@@ -14,12 +14,11 @@ let seconds = timeNodes
     .reduce((a, b) => a + b);
 
 // convert seconds into hours/mins/secs
-let secondsLeft = seconds;
-const hours = Math.floor(secondsLeft / 3600);
-secondsLeft = secondsLeft % 3600;
+const hours = Math.floor(seconds / 3600);
+seconds = seconds % 3600;
 
-const mins = Math.floor(secondsLeft / 60);
-secondsLeft = secondsLeft % 60;
+const mins = Math.floor(seconds / 60);
+seconds = seconds % 60;
 
 // log the result
-console.log(hours, mins, secondsLeft);
+console.log(hours, mins, seconds);
