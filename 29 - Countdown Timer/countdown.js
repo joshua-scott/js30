@@ -1,14 +1,16 @@
 const timerDisplay = document.querySelector('.display__time-left');
 const endDisplay = document.querySelector('.display__end-time');
-const timerButtons = Array.from(document.querySelectorAll('.timer__button'));
+const timerButtons = document.querySelectorAll('[data-time]');
 let countdown;
 
 function timer(seconds) {
+  clearInterval(countdown); // Clear any existing timers
   const startTime = Date.now();
   const endTime = startTime + seconds * 1000;
   displayEndTime(endTime);
   displayTimeLeft(seconds); // We call this now to avoid having to wait a second for setInterval
 
+  // Every second, either end the timer or show the time left
   countdown = setInterval(() => {
     const secondsLeft = Math.round((endTime - Date.now()) / 1000);
     if (secondsLeft < 0) {
@@ -21,31 +23,48 @@ function timer(seconds) {
 
 function displayEndTime(timestamp) {
   const end = new Date(timestamp);
-  const hour = end.getHours();
-  const mins = end.getMinutes();
-  endDisplay.textContent = `Be back at ${hour}:${mins < 10 ? '0' : ''}${mins}`;
+  endDisplay.textContent = `Be back at ${end.getHours()}:${toTwoDigits(end.getMinutes())}`;
 }
 
 function displayTimeLeft(secs) {
-  // convert secs into hours/mins/secs (don't need hours but left for later use)
+  // convert secs into hours/mins/secs
   const hours = Math.floor(secs / 3600);
   secs = secs % 3600;
   const mins = Math.floor(secs / 60);
   secs = secs % 60;
 
-  const display = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+  let display = '';
+  if (hours > 0) {
+    display = `${hours}:${toTwoDigits(mins)}:${toTwoDigits(secs)}`;
+  } else {
+    display = `${mins}:${toTwoDigits(secs)}`;
+  }
+
   timerDisplay.textContent = display;
   document.title = display;
 }
 
 function endTimer() {
-  alert('Time is up!');
   clearInterval(countdown);
   timerDisplay.textContent = '';
-  endDisplay.textContent = '';
+  endDisplay.textContent = 'It\'s time!';
 }
 
+function toTwoDigits(num) {
+  return `${num < 10 ? '0' : ''}${num}`;
+}
+
+/* We can't use arrow functions for the eventListeners below because we need to use 'this' */
 timerButtons.forEach(btn => btn.addEventListener('click', function () {
-  clearInterval(countdown);
-  timer(this.dataset.time);
+  timer(parseInt(this.dataset.time));
 }));
+
+document.customForm.addEventListener('submit', function (e) {
+  e.preventDefault(); // Don't try to submit the form anywhere
+  const secs = this.minutes.value * 60;
+  this.reset();
+
+  if (secs > 0) {
+    timer(secs);
+  }
+});
