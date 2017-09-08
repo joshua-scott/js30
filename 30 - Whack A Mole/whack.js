@@ -29,7 +29,8 @@ function peep() {
   }, time);
 }
 
-function bonk() {
+function bonk(e) {
+  if (!e.isTrusted) return; // prevent cheating!
   this.removeEventListener('click', bonk);
   this.classList.remove('up');
   scoreBoard.textContent = ++score;
