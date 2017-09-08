@@ -1,5 +1,6 @@
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
+const startBtn = document.querySelector('.start');
 let lastHole;
 let timeUp = false;
 let score = 0;
@@ -25,7 +26,11 @@ function peep() {
   setTimeout(() => {
     hole.removeEventListener('click', bonk);
     hole.classList.remove('up');
-    if (!timeUp) peep();
+    if (!timeUp) {
+      peep();
+    } else {
+      endGame();
+    }
   }, time);
 }
 
@@ -36,12 +41,19 @@ function bonk(e) {
   scoreBoard.textContent = ++score;
 }
 
-function startGame() {
-  score = 0;
-  scoreBoard.textContent = score;
-  timeUp = false;
-  peep();
-  setTimeout(() => timeUp = true, 10000);
+function endGame() {
+  startBtn.classList.remove('hide');
+  scoreBoard.classList.add('ended');
 }
 
-// startGame();
+function startGame() {
+  score = 0;
+  timeUp = false;
+  startBtn.classList.add('hide');
+  scoreBoard.classList.remove('ended');
+  scoreBoard.textContent = score;
+  peep();
+  setTimeout(() => timeUp = true, 2000);
+}
+
+document.querySelector('.start').addEventListener('click', startGame);
