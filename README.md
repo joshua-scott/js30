@@ -1,6 +1,3 @@
-# JavaScript30
-30 days of JavaScript projects with Wes Bos at [https://JavaScript30.com](https://JavaScript30.com)
-
 ## Contents
 
 1.  [JavaScript Drum Kit](https://jscott313.github.io/js30/01%20-%20Drum%20Kit/)
