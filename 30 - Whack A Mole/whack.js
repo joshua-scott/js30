@@ -53,7 +53,7 @@ function startGame() {
   scoreBoard.classList.remove('ended');
   scoreBoard.textContent = score;
   peep();
-  setTimeout(() => timeUp = true, 2000);
+  setTimeout(() => timeUp = true, 10000);
 }
 
 document.querySelector('.start').addEventListener('click', startGame);
