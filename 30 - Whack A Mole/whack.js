@@ -22,9 +22,11 @@ function peep() {
   const hole = randomHole(holes);
   const time = randomTime(250, 1000);
   hole.classList.add('up');
-  hole.addEventListener('click', bonk);
+  hole.addEventListener('mousedown', bonk);
+  hole.addEventListener('touchstart', bonk);
   setTimeout(() => {
-    hole.removeEventListener('click', bonk);
+    hole.removeEventListener('mousedown', bonk);
+    hole.removeEventListener('touchstart', bonk);
     hole.classList.remove('up');
     if (!timeUp) {
       peep();
@@ -36,7 +38,8 @@ function peep() {
 
 function bonk(e) {
   if (!e.isTrusted) return; // prevent cheating!
-  this.removeEventListener('click', bonk);
+  this.removeEventListener('mousedown', bonk);
+  this.removeEventListener('touchstart', bonk);
   this.classList.remove('up');
   scoreBoard.textContent = ++score;
 }
