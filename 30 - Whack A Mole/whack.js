@@ -20,7 +20,7 @@ function randomHole(holes) {
 
 function peep() {
   const hole = randomHole(holes);
-  const time = randomTime(200, 1000);
+  const time = randomTime(250, 1000);
   hole.classList.add('up');
   hole.addEventListener('click', bonk);
   setTimeout(() => {
