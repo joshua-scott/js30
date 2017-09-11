@@ -96,15 +96,19 @@ function toggleFullscreen() {
 }
 
 /* Keyboard inputs */
-document.addEventListener('keyup', function(e) { keys[e.code]() });
+document.addEventListener('keyup', e => {
+    const key = e.code;
 
-const keys = {
-    Space() { togglePlay() },
-    KeyK() { togglePlay() },
-    KeyF() { toggleFullscreen },
-    KeyJ() { skipBack },
-    KeyL() { skipForward }
-};
+    if (key === "Space" || key === "KeyK") {
+        togglePlay();
+    } else if (key === "KeyF") {
+        toggleFullscreen();
+    } else if (key === "KeyJ") {
+        skipBack();
+    } else if (key === "KeyL") {
+        skipForward();
+    }
+});
 
 function skipBack() {
     video.currentTime -= 10;
