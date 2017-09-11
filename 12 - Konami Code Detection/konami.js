@@ -13,10 +13,6 @@ function checkForCode(e) {
     }
 
     if (pressed.join().includes(konami)) {
-        if (typeof cornify_add === 'function') {
-            cornify_add();  // Adds unicorns and rainbows to the screen!
-        } else {
-            alert("Secret code detected!");
-        }
+        typeof cornify_add === 'function' ? cornify_add() : alert("Secret code detected!");
     }
 }
